@@ -5,51 +5,241 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Car Decors - Products</title>
   <link rel="stylesheet" href="css/styles.css" />
+  
+  <script type="module" src="js/products.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      color: red;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .car-models {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .car-models h2 {
+      color: red;
+      margin-bottom: 1rem;
+    }
+
+    .models-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .model-btn {
+      background-color: black;
+      border: 2px solid red;
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .model-btn:hover {
+      background-color: red;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    .product-filter {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .product-filter input {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      margin-bottom: 1rem;
+      border: 1px solid red;
+      border-radius: 4px;
+    }
+
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .category-buttons button {
+      background-color: #532323;
+      color: white;
+      border: 2px solid red;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .category-buttons button:hover {
+      background-color: red;
+      color: black;
+    }
+
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .product-card {
+      border: 2px solid red;
+      padding: 1rem;
+      background-color: #9e8b8b;
+      color: white;
+      width: 200px;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .compatible {
+      font-size: 0.8rem;
+      color: #bbb;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .back-btn {
+      background-color: black;
+      border: 2px solid red;
+      color: white;
+      padding: 8px 16px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: red;
+      color: black;
+    }
+  </style>
 </head>
 <body>
 
   <!-- Navbar -->
   <header>
     <nav class="navbar">
-      <div class="logo">Car Decors</div>
+      <div class="logo">V Car Decors</div>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="products.html">Products</a></li>
-        <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Product Section -->
-  <section class="products-section">
-    <h2>Our Products</h2>
-    <div class="products-container">
+  <!-- Back Button -->
+  <div style="text-align: left; margin: 1rem;">
+    <button id="backBtn" class="back-btn hidden">← Back</button>
+  </div>
 
-      <!-- Product Card 1 -->
-      <div class="product-card">
-        <img src="images/seat-cover.jpg" alt="Seat Cover">
-        <h3>Premium Seat Cover</h3>
-        <p>₹1200</p>
-      </div>
-
-      <!-- Product Card 2 -->
-      <div class="product-card">
-        <img src="images/car-perfume.jpg" alt="Car Perfume">
-        <h3>Luxury Car Perfume</h3>
-        <p>₹350</p>
-      </div>
-
-      <!-- Product Card 3 -->
-      <div class="product-card">
-        <img src="images/led-lights.jpg" alt="LED Lights">
-        <h3>LED Interior Lights</h3>
-        <p>₹500</p>
-      </div>
-
-      <!-- Add more cards as needed -->
-
+  <!-- Car Model Selection -->
+  <section id="carModels" class="car-models">
+    <h2>Select Your Car Model</h2>
+    <div class="models-grid">
+      <button class="model-btn">Swift</button>
+      <button class="model-btn">Alto</button>
+      <button class="model-btn">i20</button>
+      <button class="model-btn">Innova</button>
+      <button class="model-btn">Baleno</button>
+      <button class="model-btn">Venue</button>
+      <button class="model-btn">Creta</button>
+      <button class="model-btn">Fortuner</button>
+      <button class="model-btn">Thar</button>
+      <button class="model-btn">XUV700</button>
+      <button class="model-btn">Brezza</button>
+      <button class="model-btn">Seltos</button>
+      <button class="model-btn">Sonet</button>
+      <button class="model-btn">Scorpio</button>
+      <button class="model-btn">Punch</button>
+      <button class="model-btn">Nexon</button>
+      <button class="model-btn">i10</button>
+      <button class="model-btn">Celerio</button>
+      <button class="model-btn">Kwid</button>
+      <button class="model-btn">Tigor</button>
+      <button class="model-btn">Tiago</button>
+      <button class="model-btn">Harrier</button>
+      <button class="model-btn">Magnite</button>
+      <button class="model-btn">Astor</button>
+      <button class="model-btn">Jimny</button>
+      <button class="model-btn">Grand Vitara</button>
+      <button class="model-btn">Urban Cruiser</button>
+      <button class="model-btn">Ignis</button>
+      <button class="model-btn">Amaze</button>
+      <button class="model-btn">WR-V</button>
     </div>
+  </section>
+
+  <!-- Filters & Search (Initially Hidden) -->
+  <section id="productFilter" class="product-filter hidden">
+    <input type="text" id="searchInput" placeholder="Search for a product..." />
+    <div class="category-buttons">
+      <button data-cat="All">All</button>
+      <button data-cat="Alloys">Alloys</button>
+      <button data-cat="Fog Lights">Fog Lights</button>
+      <button data-cat="Body Covers">Body Covers</button>
+      <button data-cat="Seating">Seating</button>
+      <button data-cat="Floor Lamination">Floor Lamination</button>
+      <button data-cat="Tint Films">Tint Films</button>
+    </div>
+  </section>
+
+  <!-- Product Grid -->
+  <section class="product-grid" id="productGrid">
+    <!-- Cards added dynamically -->
   </section>
 
 </body>
